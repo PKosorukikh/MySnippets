@@ -6,10 +6,13 @@
                 <img src="{% static 'images/logo.png' %}" width="32" height="32" alt="">
                 PythonBin
             </a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="form-inline">
@@ -20,6 +23,15 @@
                     </li>
                 </ul>
             </div>
+            {% if request.user.is_authenticated %}
+            Welcome, {{request.user.username }}
+            {% else %}
+            <form method="post" action="url">{% csrf_token %}
+                <input name="username" type="text" placeholder="username">
+                <input name="password" type="password" placeholder="password">
+                <button type="submit">login</button>
+            </form>
+            {% endif %}
         </div>
     </nav>
 </header>

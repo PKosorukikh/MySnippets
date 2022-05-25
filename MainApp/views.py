@@ -54,3 +54,8 @@ def login_page(request):
             # Return error message
             pass
     return redirect('home')
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('home')

@@ -25,6 +25,7 @@
             </div>
             {% if request.user.is_authenticated %}
             Welcome, {{request.user.username }}
+            <a href="{% url 'logout' %}">logout</a>
             {% else %}
             <form method="post" action="url">{% csrf_token %}
                 <input name="username" type="text" placeholder="username">
